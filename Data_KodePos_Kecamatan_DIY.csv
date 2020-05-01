@@ -1,0 +1,76 @@
+﻿id;nama_kecamatan;kode_pos;jml_desa;kode_wilayah;jenis_wilayah;kabupaten_kota
+1;Bambanglipuro (Bambang Lipuro) ;55764;3;34.02.05 ;Kabupaten;Bantul
+2;Banguntapan ;55198;8;34.02.12 ;Kabupaten;Bantul
+3;Bantul ;55715;5;34.02.08 ;Kabupaten;Bantul
+4;Berbah ;55573;4;34.04.08 ;Kabupaten;Sleman
+5;Cangkringan ;55583;5;34.04.17 ;Kabupaten;Sleman
+6;Danurejan ;55213;3;34.71.04 ;Kota;Yogyakarta
+7;Depok ;55283;3;34.04.07 ;Kabupaten;Sleman
+8;Dlingo ;55783;6;34.02.11 ;Kabupaten;Bantul
+9;Galur ;55661;7;34.01.04 ;Kabupaten;Kulon Progo
+10;Gamping ;55592;5;34.04.01 ;Kabupaten;Sleman
+11;Gedangsari (Gedang Sari) ;55863;7;34.03.14 ;Kabupaten;Gunung Kidul
+12;Gedongtengen (Gedong Tengen) ;55272;2;34.71.05 ;Kota;Yogyakarta
+13;Girimulyo ;55674;4;34.01.09 ;Kabupaten;Kulon Progo
+14;Girisubo ;55883;8;34.03.16 ;Kabupaten;Gunung Kidul
+15;Godean ;55264;7;34.04.02 ;Kabupaten;Sleman
+16;Gondokusuman ;55225;5;34.71.03 ;Kota;Yogyakarta
+17;Gondomanan ;55122;2;34.71.10 ;Kota;Yogyakarta
+18;Imogiri ;55782;8;34.02.10 ;Kabupaten;Bantul
+19;Jetis ;55781;4;34.02.09 ;Kabupaten;Bantul
+20;Jetis ;55233;3;34.71.02 ;Kota;Yogyakarta
+21;Kalasan ;55571;4;34.04.10 ;Kabupaten;Sleman
+22;Kalibawang ;55672;4;34.01.12 ;Kabupaten;Kulon Progo
+23;Karangmojo ;55891;9;34.03.09 ;Kabupaten;Gunung Kidul
+24;Kasihan ;55184;4;34.02.16 ;Kabupaten;Bantul
+25;Kokap ;55653;5;34.01.08 ;Kabupaten;Kulon Progo
+26;Kotagede ;55173;3;34.71.14 ;Kota;Yogyakarta
+27;Kraton ;55133;3;34.71.09 ;Kota;Yogyakarta
+28;Kretek ;55772;5;34.02.03 ;Kabupaten;Bantul
+29;Lendah ;55663;6;34.01.05 ;Kabupaten;Kulon Progo
+30;Mantrijeron ;55143;3;34.71.08 ;Kota;Yogyakarta
+31;Mergangsan ;55153;3;34.71.12 ;Kota;Yogyakarta
+32;Minggir ;55562;5;34.04.04 ;Kabupaten;Sleman
+33;Mlati ;55288;5;34.04.06 ;Kabupaten;Sleman
+34;Moyudan ;55563;4;34.04.03 ;Kabupaten;Sleman
+35;Nanggulan ;55671;6;34.01.10 ;Kabupaten;Kulon Progo
+36;Ngaglik ;55581;6;34.04.12 ;Kabupaten;Sleman
+37;Ngampilan ;55262;2;34.71.06 ;Kota;Yogyakarta
+38;Ngawen ;55853;6;34.03.13 ;Kabupaten;Gunung Kidul
+39;Ngemplak ;55584;5;34.04.11 ;Kabupaten;Sleman
+40;Nglipar ;55852;7;34.03.02 ;Kabupaten;Gunung Kidul
+41;Pajangan ;55751;3;34.02.07 ;Kabupaten;Bantul
+42;Pakem ;55582;5;34.04.16 ;Kabupaten;Sleman
+43;Pakualaman ;55112;2;34.71.11 ;Kota;Yogyakarta
+44;Paliyan ;55871;7;34.03.05 ;Kabupaten;Gunung Kidul
+45;Pandak ;55761;4;34.02.06 ;Kabupaten;Bantul
+46;Panggang ;55872;6;34.03.06 ;Kabupaten;Gunung Kidul
+47;Panjatan ;55655;11;34.01.03 ;Kabupaten;Kulon Progo
+48;Patuk ;55862;11;34.03.04 ;Kabupaten;Gunung Kidul
+49;Pengasih ;55652;7;34.01.07 ;Kabupaten;Kulon Progo
+50;Piyungan ;55792;3;34.02.14 ;Kabupaten;Bantul
+51;Playen ;55861;13;34.03.03 ;Kabupaten;Gunung Kidul
+52;Pleret ;55791;5;34.02.13 ;Kabupaten;Bantul
+53;Ponjong ;55892;11;34.03.10 ;Kabupaten;Gunung Kidul
+54;Prambanan ;55572;6;34.04.09 ;Kabupaten;Sleman
+55;Pundong ;55771;3;34.02.04 ;Kabupaten;Bantul
+56;Purwosari ;55872;34.03.18 ;Kabupaten;Gunung Kidul
+58;Samigaluh ;55673;7;34.01.11 ;Kabupaten;Kulon Progo
+59;Sanden ;55763;4;34.02.02 ;Kabupaten;Bantul
+61;Sedayu ;55752;4;34.02.17 ;Kabupaten;Bantul
+62;Semanu ;55893;5;34.03.08 ;Kabupaten;Gunung Kidul
+63;Semin ;55854;10;34.03.12 ;Kabupaten;Gunung Kidul
+64;Sentolo ;55664;8;34.01.06 ;Kabupaten;Kulon Progo
+65;Sewon ;55188;4;34.02.15 ;Kabupaten;Bantul
+66;Seyegan ;55561;5;34.04.05 ;Kabupaten;Sleman
+67;Sleman ;55515;5;34.04.13 ;Kabupaten;Sleman
+68;Srandakan ;55762;2;34.02.01 ;Kabupaten;Bantul
+69;Tanjungsari ;55881;5;34.03.17 ;Kabupaten;Gunung Kidul
+70;Tegalrejo ;55244;4;34.71.01 ;Kota;Yogyakarta
+71;Temon ;55654;15;34.01.01 ;Kabupaten;Kulon Progo
+72;Tempel ;55552;8;34.04.14 ;Kabupaten;Sleman
+74;Turi ;55551;4;34.04.15 ;Kabupaten;Sleman
+75;Umbulharjo ;55167;7;34.71.13 ;Kota;Yogyakarta
+76;Wates ;55651;8;34.01.02 ;Kabupaten;Kulon Progo
+77;Wirobrajan ;55253;3;34.71.07 ;Kota;Yogyakarta
+78;Wonosari ;55851;14;34.03.01 ;Kabupaten;Gunung Kidul
