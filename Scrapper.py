@@ -436,6 +436,8 @@ class Scrapper:
                 r = s.get(link,verify=False)
                 data = r.text 
                 #print(data)
+                data = re.sub(r"<!--", "", data)
+                data = re.sub(r"-->", "", data)
                 url = soup(data,"lxml")
 
                 title = url.find('h4',attrs={'class':'text-danger'}).text
