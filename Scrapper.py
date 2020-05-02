@@ -642,10 +642,10 @@ class Scrapper:
                             list_item['n_odr'] = 'N/A'
                             list_item['n_otg'] = 'N/A'
                             list_item['n_odp'] = 'N/A'
-                            list_item['n_pdp'] = int(str(row[2]).rstrip())
-                            list_item['n_confirm'] = int(str(row[1]).rstrip())
-                            list_item['n_meninggal'] = int(str(row[4]).rstrip())
-                            list_item['n_sembuh'] = int(str(row[3]).rstrip())
+                            list_item['n_pdp'] = int(str(row[7]).rstrip())
+                            list_item['n_confirm'] = int(str(row[6]).rstrip())
+                            list_item['n_meninggal'] = int(str(row[9]).rstrip())
+                            list_item['n_sembuh'] = int(str(row[8]).rstrip())
                             list_item['last_update'] = _last_update
                             #print(list_item)
                             kabkota = KabupatenKota.select().where(KabupatenKota.prov_id==propinsi, 
@@ -661,10 +661,10 @@ class Scrapper:
                             if datum.count() < 1:
                                 datum = Data.create(
                                     kabupaten=kabkota,
-                                    n_pdp=int(str(row[2]).rstrip()),
-                                    n_confirm=int(str(row[1]).rstrip()),
-                                    n_meninggal=int(str(row[4]).rstrip()),
-                                    n_sembuh=int(str(row[3]).rstrip()),
+                                    n_pdp=int(str(row[7]).rstrip()),
+                                    n_confirm=int(str(row[6]).rstrip()),
+                                    n_meninggal=int(str(row[9]).rstrip()),
+                                    n_sembuh=int(str(row[8]).rstrip()),
                                     last_update=dateparser.parse(_last_update)
                                 )
                             output['result'].append(list_item)
