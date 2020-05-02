@@ -630,44 +630,44 @@ class Scrapper:
                         row = [tr.text.strip() for tr in td if tr.text.strip()]
                         #print(row)
                         if i>=1 and i<num_rows-1:
+                            if row:
+                                list_item = {}
+                                list_item['provinsi'] = 'Bali'
+                                list_item['kode_kab_kota'] = 'N/A'
+                                list_item['kab_kota'] = row[0] 
+                                list_item['kecamatan'] = 'N/A'
+                                list_item['populasi'] = 'N/A'
+                                list_item['lat_kab_kota'] = 'N/A'
+                                list_item['long_kab_kota'] = 'N/A'
+                                list_item['n_odr'] = 'N/A'
+                                list_item['n_otg'] = 'N/A'
+                                list_item['n_odp'] = 'N/A'
+                                list_item['n_pdp'] = int(str(row[7]).rstrip())
+                                list_item['n_confirm'] = int(str(row[6]).rstrip())
+                                list_item['n_meninggal'] = int(str(row[9]).rstrip())
+                                list_item['n_sembuh'] = int(str(row[8]).rstrip())
+                                list_item['last_update'] = _last_update
+                                #print(list_item)
+                                kabkota = KabupatenKota.select().where(KabupatenKota.prov_id==propinsi, 
+                                    KabupatenKota.nama==row[0])
 
-                            list_item = {}
-                            list_item['provinsi'] = 'Bali'
-                            list_item['kode_kab_kota'] = 'N/A'
-                            list_item['kab_kota'] = row[0] 
-                            list_item['kecamatan'] = 'N/A'
-                            list_item['populasi'] = 'N/A'
-                            list_item['lat_kab_kota'] = 'N/A'
-                            list_item['long_kab_kota'] = 'N/A'
-                            list_item['n_odr'] = 'N/A'
-                            list_item['n_otg'] = 'N/A'
-                            list_item['n_odp'] = 'N/A'
-                            list_item['n_pdp'] = int(str(row[7]).rstrip())
-                            list_item['n_confirm'] = int(str(row[6]).rstrip())
-                            list_item['n_meninggal'] = int(str(row[9]).rstrip())
-                            list_item['n_sembuh'] = int(str(row[8]).rstrip())
-                            list_item['last_update'] = _last_update
-                            #print(list_item)
-                            kabkota = KabupatenKota.select().where(KabupatenKota.prov_id==propinsi, 
-                                KabupatenKota.nama==row[0])
+                                if kabkota.count() < 1:
+                                    kabkota =KabupatenKota.create(prov_id=propinsi, 
+                                        nama=row[0])
+                                else:
+                                    kabkota  = kabkota.get()
 
-                            if kabkota.count() < 1:
-                                kabkota =KabupatenKota.create(prov_id=propinsi, 
-                                    nama=row[0])
-                            else:
-                                kabkota  = kabkota.get()
-
-                            datum = Data.select().where(Data.kabupaten==kabkota, Data.last_update==dateparser.parse(_last_update))
-                            if datum.count() < 1:
-                                datum = Data.create(
-                                    kabupaten=kabkota,
-                                    n_pdp=int(str(row[7]).rstrip()),
-                                    n_confirm=int(str(row[6]).rstrip()),
-                                    n_meninggal=int(str(row[9]).rstrip()),
-                                    n_sembuh=int(str(row[8]).rstrip()),
-                                    last_update=dateparser.parse(_last_update)
-                                )
-                            output['result'].append(list_item)
+                                datum = Data.select().where(Data.kabupaten==kabkota, Data.last_update==dateparser.parse(_last_update))
+                                if datum.count() < 1:
+                                    datum = Data.create(
+                                        kabupaten=kabkota,
+                                        n_pdp=int(str(row[7]).rstrip()),
+                                        n_confirm=int(str(row[6]).rstrip()),
+                                        n_meninggal=int(str(row[9]).rstrip()),
+                                        n_sembuh=int(str(row[8]).rstrip()),
+                                        last_update=dateparser.parse(_last_update)
+                                    )
+                                output['result'].append(list_item)
                         i=i+1
             return output
 
