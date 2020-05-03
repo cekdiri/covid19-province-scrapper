@@ -52,6 +52,7 @@ Table Kode Provinsi
 | Bali               | bali          |
 | Sulawesi Barat     | sulbar        |
 | Banten             | banten        |
+| Nusa Tenggara Barat| ntb           |
 
 
 
