@@ -29,8 +29,12 @@ Isikan user mysql, password dan nama database di settings.cfg
 Jalankan: 
 python app.py 
 
-akses melalui browser: http://localhost:5000/api/<kodeprovinsi>
+akses melalui browser: 
+http://localhost:5000/api/<kodeprovinsi>
 
+contoh:
+
+http://localhost:5000/api/aceh
 ```
 
 Contributor
