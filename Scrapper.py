@@ -723,7 +723,7 @@ class Scrapper:
 
                     if kabkota.count() < 1:
                         kabkota =KabupatenKota.create(prov_id=propinsi, 
-                            nama=data['title']
+                            nama=data['title'],
                             lat=data['latitude'], lon=data['longitude'],populasi='')
                     else:
                         kabkota  = kabkota.get()
@@ -901,7 +901,7 @@ class Scrapper:
 
                                 if kabkota.count() < 1:
                                     kabkota =KabupatenKota.create(prov_id=propinsi, 
-                                        nama=str(row[0]).replace('\n','').replace('               ',' ')
+                                        nama=str(row[0]).replace('\n','').replace('               ',' '))
                                 else:
                                     kabkota  = kabkota.get()
 
@@ -913,9 +913,9 @@ class Scrapper:
                                         n_odp=int(str(row[8]).rstrip()),
                                         n_pdp=int(str(row[11]).rstrip()),
                                         n_confirm=int(str(row[14]).rstrip()),
-                                        n_meninggal=int(str(row[16]).rstrip()) 
+                                        n_meninggal=int(str(row[16]).rstrip()), 
                                         n_sembuh=int(str(row[17]).rstrip()),
-                                        last_update=_last_update
+                                        last_update=dateparser.parse(_last_update)
                                     )
                                 output['result'].append(list_item)
                         i=i+1
