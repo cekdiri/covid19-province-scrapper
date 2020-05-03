@@ -37,23 +37,26 @@ contoh:
 http://localhost:5000/api/aceh
 ```
 
+Table Kode Provinsi
+---
+
+| Nama Provinsi      | Kode Provinsi |
+|--------------------|---------------|
+| D.I. Aceh          | aceh          |
+| Jawa Timur         | jatim         |
+| Kalimantan Selatan | kalsel        |
+| Sumatera Utara     | sumut         |
+| D.I. Yogyakarta    | diy           |
+| Sulawesi Selatan   | sulsel        |
+| Bangka Belitung    | babel         |
+| Bali               | bali          |
+| Sulawesi Barat     | sulbar        |
+| Banten             | banten        |
+
+
+
 Contributor
 ---
 - [Sigit Poernomo](https://github.com/sigit-purnomo)
 - [Rony Lantip](https://github.com/lantip)
 
-Table Kode Provinsi
----
-
-| Nama Provinsi      | Kode   |
-|--------------------|--------|
-| D.I. Aceh          | aceh   |
-| Jawa Timur         | jatim  |
-| Kalimantan Selatan | kalsel |
-| Sumatera Utara     | sumut  |
-| D.I. Yogyakarta    | diy    |
-| Sulawesi Selatan   | sulsel |
-| Bangka Belitung    | babel  |
-| Bali               | bali   |
-| Sulawesi Barat     | sulbar |
-| Banten             | banten |
