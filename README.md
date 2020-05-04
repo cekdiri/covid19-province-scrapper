@@ -53,11 +53,12 @@ Table Kode Provinsi
 | Sulawesi Barat     | sulbar        |
 | Banten             | banten        |
 | Nusa Tenggara Barat| ntb           |
+| Kalimantan Tengah  | kalteng       |
 
 
 
 Contributor
 ---
-- [Sigit Poernomo](https://github.com/sigit-purnomo)
+- [Sigit Purnomo](https://github.com/sigit-purnomo)
 - [Rony Lantip](https://github.com/lantip)
 
