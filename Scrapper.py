@@ -987,10 +987,125 @@ class Scrapper:
                                 n_odp=data['data'][0]['sore_odp'],
                                 n_pdp=data['data'][0]['sore_pdp'],
                                 n_confirm=data['data'][0]['sore_positif'],
+                                n_meninggal=data['data'][0]['meninggal']
+                                n_sembuh=data['data'][0]['sembuh']
                                 last_update=_last_update
                             )
 
                         output['result'].append(list_item)
+
+            return output
+
+        elif prov=='sulut':
+            propinsi = Province.select().where(Province.nama_prov=='Sulawesi Utara')
+            if propinsi.count() < 1:
+                propinsi =Province.create(nama_prov='Sulawesi Utara', alias=prov)
+            else:
+                propinsi  = propinsi.get()
+            sekarang = datetime.datetime.now().date()
+            try:
+                result = list(Data.select().join(Province).where(fn.date_trunc('day', Data.last_update) == sekarang), Province.alias==prov)
+            except:
+                result = []
+            if len(result) > 0:
+                return result
+            link = 'https://corona.sulutprov.go.id/data'
+            output = {}
+            output['result'] = []   
+
+            with requests.session() as s:
+
+                r = s.get(link,verify=False)
+                data = r.text 
+                #print(data)
+                url = soup(data,"lxml")
+
+                title = url.find('p',attrs={'class':'section-lead'}).text
+                pos = str(title).rfind(', ')
+                _last_update = str(title)[pos+1:]
+
+                table = url.find('table', attrs={'class':'table text-nowrap table-sm table-bordered table-hover'})
+
+                if table is not None:
+                    res = []
+                    table_rows = table.find_all('tr')
+
+                    num_rows = len(table_rows)
+                    #print(num_rows)
+
+                    i = 0
+
+                    for tr in table_rows:
+                        td = tr.find_all('td')
+                        row = [tr.text.strip() for tr in td]
+                        #print(row)
+                        if i>=1 and i<num_rows-1:
+
+                            list_item = {}
+                            list_item['provinsi'] = 'Sulawesi Utara'
+                            list_item['kode_kab_kota'] = 'N/A'
+                            list_item['kab_kota'] = str(row[0]).rstrip()
+                            list_item['kecamatan'] = 'N/A'
+                            list_item['populasi'] = 'N/A'
+                            list_item['lat_kab_kota'] = 'N/A'
+                            list_item['long_kab_kota'] = 'N/A'
+                            list_item['n_odr'] = 'N/A'
+                            list_item['n_otg'] = 'N/A'
+                            if row[6]!='':
+                            	odp = int(str(row[6]).rstrip())
+                                list_item['n_odp'] = int(str(row[6]).rstrip())
+                            else: 
+                            	odp= 0
+                                list_item['n_odp'] = 'N/A'
+                            if row[5]!='':
+                            	pdp = int(str(row[5]).rstrip())
+                                list_item['n_pdp'] = int(str(row[5]).rstrip())
+                            else:
+                            	pdp=0
+                                list_item['n_pdp'] = 'N/A'
+                            if row[4]!='':
+                            	positif = int(str(row[4]).rstrip())
+                                list_item['n_confirm'] = int(str(row[4]).rstrip())
+                            else:
+                            	positif=0
+                                list_item['n_confirm'] = 'N/A'
+                            if row[3]!='':
+                            	meninggal = int(str(row[3]).rstrip()) 
+                                list_item['n_meninggal'] = int(str(row[3]).rstrip()) 
+                            else:
+                            	meninggal =0
+                                list_item['n_meninggal'] = 'N/A'
+                            if row[2]!='':
+                            	sembuh = int(str(row[2]).rstrip())
+                                list_item['n_sembuh'] = int(str(row[2]).rstrip())
+                            else:
+                            	sembuh=0
+                                list_item['n_sembuh'] = 'N/A'    
+                            list_item['last_update'] = _last_update
+                            #print(list_item)
+                            kabkota = KabupatenKota.select().where(KabupatenKota.prov_id==propinsi, 
+                                KabupatenKota.nama==str(row[0]).rstrip())
+
+                            if kabkota.count() < 1:
+                                kabkota =KabupatenKota.create(prov_id=propinsi, 
+                                    nama=str(row[0]).rstrip())
+                            else:
+                                kabkota  = kabkota.get()
+
+                            datum = Data.select().where(Data.kabupaten==kabkota, Data.last_update==dateparser.parse(_last_update))
+                            if datum.count() < 1:
+                                datum = Data.create(
+                                    kabupaten=kabkota,
+                                    n_odp=odp,
+                                    n_pdp=pdp,
+                                    n_confirm=positif,
+                                    n_meninggal=meninggal,
+                                    n_sembuh=sembuh,
+                                    last_update=dateparser.parse(_last_update)
+                                )
+                            output['result'].append(list_item)
+
+                        i=i+1
 
             return output
 

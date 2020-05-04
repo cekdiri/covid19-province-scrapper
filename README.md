@@ -54,6 +54,7 @@ Table Kode Provinsi
 | Banten             | banten        |
 | Nusa Tenggara Barat| ntb           |
 | Kalimantan Tengah  | kalteng       |
+| SUlawesi Utara     | sulut         |
 
 
 
