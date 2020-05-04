@@ -920,4 +920,77 @@ class Scrapper:
                                 output['result'].append(list_item)
                         i=i+1
             return output        
+        elif prov=='kalteng':
+            propinsi = Province.select().where(Province.nama_prov=='Kalimantan Tengah')
+            if propinsi.count() < 1:
+                propinsi =Province.create(nama_prov='Kalimantan Tengah', alias=prov)
+            else:
+                propinsi  = propinsi.get()
+            sekarang = datetime.datetime.now().date()
+            try:
+                result = list(Data.select().join(Province).where(fn.date_trunc('day', Data.last_update) == sekarang), Province.alias==prov)
+            except:
+                result = []
+            if len(result) > 0:
+                return result
+            link = 'https://corona.kalteng.go.id/peta'
+            output = {}
+            output['result'] = []
+            with requests.session() as s:
+                r = s.get(link,verify=True)
+                data = r.text
+                url = soup(data,"lxml")
+
+                script = url.find_all('script')
+                json_data = ''
+                for item in script:
+                    if re.search(r'semua_data_tersimpan_raw\s\=\s(.*)\;',str(item)):
+                        var_data = re.findall(r'semua_data_tersimpan_raw\s\=\s(.*)\;',str(item))
+                        json_data = json.loads(str(var_data[0]))
+
+
+                for data in json_data:
+                    if 'RS' not in data['urai']:
+                        list_item = {}
+                        list_item['provinsi'] = 'Kalimantan Tengah'
+                        list_item['kode_kab_kota'] = data['kodekabkot']
+                        list_item['kab_kota'] = data['urai']
+                        list_item['kecamatan'] = 'N/A'
+                        list_item['populasi'] = 'N/A'
+                        list_item['lat_kab_kota'] = data['lat']
+                        list_item['long_kab_kota'] = data['long']
+                        list_item['n_odr'] = 'N/A'
+                        list_item['n_otg'] = 'N/A'
+                        list_item['n_odp'] = data['data'][0]['sore_odp']
+                        list_item['n_pdp'] = data['data'][0]['sore_pdp']
+                        list_item['n_confirm'] = data['data'][0]['sore_positif']
+                        list_item['n_meninggal'] = data['data'][0]['meninggal']
+                        list_item['n_sembuh'] = data['data'][0]['sembuh']
+                        pos = data['data'][0]['update'].find(',')
+                        _last_update = data['data'][0]['update'][pos+1:]
+                        list_item['last_update'] = _last_update
+
+                        kabkota = KabupatenKota.select().where(KabupatenKota.prov_id==propinsi,
+                            KabupatenKota.nama==data['urai'])
+
+                        if kabkota.count() < 1:
+                            kabkota =KabupatenKota.create(prov_id=propinsi,
+                                nama=data['urai'],
+                                lat=data['lat'], lon=data['long'],populasi='')
+                        else:
+                            kabkota  = kabkota.get()
+
+                        datum = Data.select().where(Data.kabupaten==kabkota, Data.last_update==dateparser.parse(_last_update))
+                        if datum.count() < 1:
+                            datum = Data.create(
+                                kabupaten=kabkota,
+                                n_odp=data['data'][0]['sore_odp'],
+                                n_pdp=data['data'][0]['sore_pdp'],
+                                n_confirm=data['data'][0]['sore_positif'],
+                                last_update=_last_update
+                            )
+
+                        output['result'].append(list_item)
+
+            return output
 
