@@ -12,3 +12,5 @@ class Scrapper:
     def scrapper(prov):
         scrapper = importlib.import_module('scrappers.{}'.format(prov))
         return scrapper.scrape()
+
+
