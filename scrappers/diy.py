@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup as soup
 from peewee import fn
 from selenium import webdriver
+from pathlib import Path
 
 from models import Province, KabupatenKota, Data
 
@@ -43,8 +44,10 @@ def scrape():
     hidden = "/html/body/div[2]/div[2]/div/div/form/input[1]"
     kodepos = '//*[@id="fname"]'
     button = "/html/body/div[2]/div[2]/div/div/form/button"
-
-    kodepos_df = pd.read_csv("Data_KodePos_Kecamatan_DIY.csv", delimiter=";")
+    
+    directory = Path().absolute()
+    
+    kodepos_df = pd.read_csv(str(directory)+"/data/Data_KodePos_Kecamatan_DIY.csv", delimiter=";")
 
     output = {}
     output["result"] = []
