@@ -54,7 +54,7 @@ Table Kode Provinsi
 | Banten             | banten        |
 | Nusa Tenggara Barat| ntb           |
 | Kalimantan Tengah  | kalteng       |
-| SUlawesi Utara     | sulut         |
+| Sulawesi Utara     | sulut         |
 | Jawa Tengah        | jateng        |
 
 
@@ -63,4 +63,5 @@ Contributor
 ---
 - [Sigit Purnomo](https://github.com/sigit-purnomo)
 - [Rony Lantip](https://github.com/lantip)
+- [mr robee](https://github.com/mrobee)
 
