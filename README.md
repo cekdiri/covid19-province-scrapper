@@ -26,10 +26,10 @@ Usage
 ```
 Isikan user mysql, password dan nama database di settings.cfg
 
-Jalankan: 
-python app.py 
+Jalankan:
+python app.py
 
-akses melalui browser: 
+akses melalui browser:
 http://localhost:5000/api/<kodeprovinsi>
 
 contoh:
@@ -55,6 +55,7 @@ Table Kode Provinsi
 | Nusa Tenggara Barat| ntb           |
 | Kalimantan Tengah  | kalteng       |
 | SUlawesi Utara     | sulut         |
+| Jawa Tengah        | jateng        |
 
 
 
